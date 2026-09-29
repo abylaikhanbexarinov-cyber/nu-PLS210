@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sex, Love and Uyat at NU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=PT+Serif:wght@700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky section rail (with a talk timer) beside one readable column; the rail becomes a top strip on phones. */
+:root{
+  --paper:#F5F4F7; --ink:#221C2B; --muted:#5E5668; --rule:#D9D3DE;
+  --accent:#8A2F55; --accent-soft:#F1E3EA; --second:#2E6468; --second-soft:#E0EEEE; --card:#FFFFFF;
+  --f-display:"Gloock",Georgia,"Times New Roman",serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#17131C; --ink:#EDE8F0; --muted:#A79FB0; --rule:#3A3242;
+  --accent:#E58AAF; --accent-soft:#3A2230; --second:#86C6C9; --second-soft:#1D3233; --card:#201A27; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#17131C; --ink:#EDE8F0; --muted:#A79FB0; --rule:#3A3242;
+  --accent:#E58AAF; --accent-soft:#3A2230; --second:#86C6C9; --second-soft:#1D3233; --card:#201A27; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1.125rem;line-height:1.62;margin:0}
+.shell{display:grid;grid-template-columns:15rem minmax(0,1fr);gap:3rem;max-width:74rem;margin:0 auto;padding-inline:1.5rem;padding-block:0}
+nav.rail{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;padding-block:2.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.15rem}
+.rail a{display:block;padding:.35rem .6rem;border-radius:4px;color:var(--muted);text-decoration:none;font-size:.95rem;line-height:1.3}
+.rail a:hover{color:var(--ink);background:var(--accent-soft)}
+.rail a.on{color:var(--accent);font-weight:700;background:var(--accent-soft)}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.timer{border-top:1px solid var(--rule);padding-top:1rem;display:flex;flex-direction:column;gap:.5rem}
+.clock{font-family:var(--f-mono);font-size:1.9rem;font-variant-numeric:tabular-nums;line-height:1}
+.clock.window{color:var(--second)} .clock.over{color:var(--accent)}
+.tbtns{display:flex;gap:.4rem}
+button{font:inherit;font-size:.85rem;padding:.35rem .75rem;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:4px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{font-size:.78rem;color:var(--muted);line-height:1.4}
+main{padding-block:3rem 6rem;max-width:44rem;min-width:0}
+header.hero{padding-bottom:2.5rem;border-bottom:1px solid var(--rule);margin-bottom:1rem}
+.kaz{font-family:"PT Serif",Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(4rem,12vw,7.5rem);line-height:.9;color:var(--accent);margin:0 0 .25rem;letter-spacing:-.01em}
+.kaz small{display:block;font-family:var(--f-mono);font-size:.8rem;letter-spacing:.12em;color:var(--muted);margin-top:.75rem;text-transform:uppercase}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.12;margin:1.5rem 0 1rem;text-wrap:balance}
+.meta{color:var(--muted);font-size:.95rem;margin:0}
+section{padding-block:2.75rem;border-bottom:1px solid var(--rule);scroll-margin-top:1rem}
+section:last-of-type{border-bottom:0}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(1.6rem,3.2vw,2.1rem);line-height:1.15;margin:.35rem 0 1.1rem;text-wrap:balance}
+h3{font-size:1.15rem;margin:1.75rem 0 .5rem}
+p{margin:0 0 1rem}
+em{font-style:italic}
+.rq{font-family:var(--f-display);font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.3;margin:0 0 1.5rem;padding-left:1.25rem;border-left:4px solid var(--accent);text-wrap:balance}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.75rem;margin:1.25rem 0 0}
+.check{border:1px solid var(--rule);border-radius:6px;padding:.85rem 1rem;background:var(--card)}
+.check b{display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem;font-weight:500}
+.check span{font-size:1rem;line-height:1.45}
+blockquote{margin:1.5rem 0;padding:0;display:grid;gap:.9rem}
+blockquote p{font-family:var(--f-display);font-size:1.3rem;line-height:1.35;margin:0}
+blockquote cite{font-style:normal;font-size:.88rem;color:var(--muted)}
+.sources{display:grid;gap:1rem;margin-top:1.5rem}
+.src{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1rem;padding:1rem 0;border-top:1px solid var(--rule)}
+.src .who{font-family:var(--f-mono);font-size:.82rem;line-height:1.4;color:var(--muted)}
+.src .who strong{display:block;color:var(--ink);font-family:var(--f-body);font-size:1rem}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.1rem .45rem;border-radius:3px;margin-top:.4rem}
+.tag.t1{background:var(--accent-soft);color:var(--accent)} .tag.t2{background:var(--second-soft);color:var(--second)} .tag.t3{border:1px solid var(--rule);color:var(--muted)}
+.src p{margin:0 0 .4rem}
+.src .use{font-size:.98rem;color:var(--muted)}
+.tension{background:var(--accent-soft);border-radius:6px;padding:1.25rem 1.4rem;margin-top:1.75rem}
+.tension p:last-child{margin:0}
+.scripts{display:grid;gap:0;margin:1.5rem 0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--card)}
+.lvl{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1rem;padding:1rem 1.2rem;border-top:1px solid var(--rule)}
+.lvl:first-child{border-top:0}
+.lvl b{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.lvl span{font-size:1rem;line-height:1.5}
+.filter{background:var(--second-soft);color:var(--ink)}
+.filter b{color:var(--second)}
+ul.plain{padding-left:1.2rem;margin:0 0 1rem}
+ul.plain li{margin-bottom:.55rem}
+.pos{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1rem 0 1.25rem}
+.pos div{border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem;background:var(--card)}
+.pos h4{margin:0 0 .35rem;font-size:1rem}
+.pos p{margin:0;font-size:1rem;line-height:1.5}
+.ai{border:1px dashed var(--muted);border-radius:6px;padding:1.2rem 1.4rem}
+.ungraded{background:var(--second-soft);border-radius:8px;padding:1.5rem;margin-top:1rem}
+.ungraded h3{margin-top:0}
+.refs{font-size:.95rem;line-height:1.5;padding-left:0;list-style:none}
+.refs li{padding-left:2rem;text-indent:-2rem;margin-bottom:.6rem;overflow-wrap:anywhere}
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:0;padding-inline:1rem}
+  nav.rail{height:auto;padding-block:.6rem;flex-direction:row;align-items:center;gap:.75rem;background:var(--paper);border-bottom:1px solid var(--rule);z-index:5;overflow:hidden}
+  .rail .label,.hint,.timer .label{display:none}
+  .rail ol{flex-direction:row;overflow-x:auto;gap:.25rem;flex:1;min-width:0;scrollbar-width:none}
+  .rail a{white-space:nowrap;font-size:.85rem}
+  .timer{display:none}
+  main{padding-block:1.5rem 4rem}
+  .src,.lvl{grid-template-columns:minmax(0,1fr);gap:.35rem}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+<nav class="rail" aria-label="Sections">
+  <span class="label">Proposal · Part 1</span>
+  <ol id="toc">
+    <li><a href="#question">Research question</a></li>
+    <li><a href="#positioning">Positioning</a></li>
+    <li><a href="#contribution">Contribution</a></li>
+    <li><a href="#literature">Literature review</a></li>
+    <li><a href="#framework">Analytical framework</a></li>
+    <li><a href="#ai">AI transparency</a></li>
+    <li><a href="#reflection">What I still don't understand</a></li>
+  </ol>
+  <div class="timer">
+    <span class="label">Talk time · aim 8–10 min</span>
+    <div class="clock" id="clock" aria-live="off">0:00</div>
+    <div class="tbtns"><button id="tgo" type="button">Start</button><button id="treset" type="button">Reset</button></div>
+    <p class="hint">Press → or ← to move between sections.</p>
+  </div>
+</nav>
+
+<main>
+<header class="hero" id="top">
+  <p class="kaz">ұят<small>uyat · shame</small></p>
+  <h1>Does sex change what love means?</h1>
+  <p class="meta">PLS 210 · Research Design Part 1 · Fall 2026 · Nazarbayev University · Pseudonym: X</p>
+</header>
+
+<section id="question">
+  <span class="label">The puzzle</span>
+  <h2>Research question</h2>
+  <ul class="plain">
+    <li>2024 pilot: 20 male NU students. Sex makes love <em>stronger</em>, but more experience means <em>less</em> “amorousness.”</li>
+    <li>I only asked men.</li>
+  </ul>
+  <p class="rq">How do male and female NU undergraduates describe the link between sexual experience and love in the 2026–2027 academic year?</p>
+  <div class="checks">
+    <div class="check"><b>Empirical</b><span>How they describe it, not how they should live</span></div>
+    <div class="check"><b>Scoped</b><span>NU undergraduates, by gender, 2026–2027</span></div>
+    <div class="check"><b>Answerable</b><span>Through interviews</span></div>
+  </div>
+</section>
+
+<section id="positioning">
+  <span class="label">Where I stand</span>
+  <h2>Positioning: interpretivist</h2>
+  <ul class="plain">
+    <li><strong>Meaning, not measurement</strong> (Schwartz-Shea &amp; Yanow, 2012).</li>
+    <li>“Love” and “amorousness” have no fixed definition to count.</li>
+    <li>I compare men’s and women’s <em>stories</em>, not causes.</li>
+    <li>Shame shapes answers, so method matters (Crawford &amp; Popp, 2003).</li>
+  </ul>
+</section>
+
+<section id="contribution">
+  <span class="label">What this adds</span>
+  <h2>Contribution</h2>
+  <ul class="plain">
+    <li>Kazakhstan research: sex education, parents, surveys.</li>
+    <li>Double-standard research: mostly American.</li>
+    <li><strong>Gap:</strong> no one has asked NU men and women how <em>they</em> link sex and love.</li>
+    <li>NU is where <em>uyat</em> meets global scripts.</li>
+  </ul>
+</section>
+
+<section id="literature">
+  <span class="label">What others found</span>
+  <h2>Literature review</h2>
+  <div class="sources">
+    <div class="src"><div class="who"><strong>Simon &amp; Gagnon</strong>1986<br><span class="tag t1">Scripts</span></div><div><p>Sex is learned like a script: cultural, interpersonal, intrapsychic.</p></div></div>
+    <div class="src"><div class="who"><strong>Crawford &amp; Popp</strong>2003<br><span class="tag t1">Gender</span></div><div><p>The double standard persists, but it’s subtle and depends on context.</p></div></div>
+    <div class="src"><div class="who"><strong>Hamilton &amp; Armstrong</strong>2009<br><span class="tag t1">Gender</span></div><div><p>US college women face “double binds” in both hookups and relationships.</p></div></div>
+    <div class="src"><div class="who"><strong>Kabatova</strong>2022<br><span class="tag t2">Uyat</span></div><div><p><em>Uyat</em> silences talk about sex in Kazakhstan, more for girls.</p></div></div>
+    <div class="src"><div class="who"><strong>Zhanabayeva</strong>2018<br><span class="tag t2">Uyat</span></div><div><p>Bishkek youth: dating is fine, but premarital sex is condemned for women.</p></div></div>
+    <div class="src"><div class="who"><strong>Dall’Agnola &amp; Thibault</strong>2021<br><span class="tag t3">Kazakhstan</span></div><div><p>Young urban Kazakhs see more online content that challenges marriage norms.</p></div></div>
+  </div>
+  <div class="tension">
+    <p><strong>Tension:</strong> the US campus pushes casual sex. In Central Asia, sex puts women’s honour at risk.</p>
+    <p><strong>NU sits between the two.</strong></p>
+  </div>
+</section>
+
+<section id="framework">
+  <span class="label">My lens</span>
+  <h2>Analytical framework</h2>
+  <p><strong>Gendered sexual scripts under <em>uyat</em></strong>. These are sensitising concepts, not fixed codes.</p>
+  <div class="scripts" role="list">
+    <div class="lvl" role="listitem"><b>Cultural</b><span>What “everyone knows”</span></div>
+    <div class="lvl" role="listitem"><b>Interpersonal</b><span>What they do in relationships</span></div>
+    <div class="lvl" role="listitem"><b>Intrapsychic</b><span>How they explain their own feelings</span></div>
+    <div class="lvl filter" role="listitem"><b>Uyat (filter)</b><span>What can be said, and by whom</span></div>
+  </div>
+  <h3>Expectations</h3>
+  <ul class="plain">
+    <li>Men: experience = maturity, or less amorousness.</li>
+    <li>Women: trust, reputation, marriage. They’ll speak more carefully.</li>
+    <li>Both: a gap between their own beliefs and what their family expects.</li>
+    <li>Jokes, silences and language switching show where <em>uyat</em> works.</li>
+  </ul>
+  <h3>Positionality</h3>
+  <div class="pos">
+    <div><h4>Insider with men</h4><p>Rapport, but they may perform masculinity.</p></div>
+    <div><h4>Outsider with women</h4><p>It’s <em>uyat</em> to talk about sex with a man.</p></div>
+  </div>
+  <p><strong>Response:</strong> a female co-interviewer option, written answers, cameras off, and I’ll report the effect.</p>
+</section>
+
+<section id="ai">
+  <span class="label">About 30 seconds</span>
+  <h2>AI transparency</h2>
+  <div class="ai"><p>I used Claude (AI) to spot the flaw in my 2024 design, narrow the question, suggest sources, and draft the text and this page’s code. I checked and read every source and rewrote the text myself. The pilot data, question and decisions are mine.</p></div>
+  <h3>References</h3>
+  <ul class="refs">
+    <li>Crawford, M., &amp; Popp, D. (2003). Sexual double standards: A review and methodological critique of two decades of research. <em>Journal of Sex Research, 40</em>(1), 13–26.</li>
+    <li>Dall’Agnola, J., &amp; Thibault, H. (2021). Online temptations: Divorce and extramarital affairs in Kazakhstan. <em>Religions, 12</em>(8), 654.</li>
+    <li>Hamilton, L., &amp; Armstrong, E. A. (2009). Gendered sexuality in young adulthood: Double binds and flawed options. <em>Gender &amp; Society, 23</em>(5), 589–616.</li>
+    <li>Kabatova, K. (2022). Purity vs. safety: How <em>uyat</em> undermines youth’s sexual literacy in Kazakhstan. In H. Thibault &amp; J.-F. Caron (Eds.), <em>Uyat and the culture of shame in Central Asia</em> (pp. 23–41). Palgrave Macmillan.</li>
+    <li>Schwartz-Shea, P., &amp; Yanow, D. (2012). <em>Interpretive research design</em>. Routledge.</li>
+    <li>Simon, W., &amp; Gagnon, J. H. (1986). Sexual scripts: Permanence and change. <em>Archives of Sexual Behavior, 15</em>(2), 97–120.</li>
+    <li>Zhanabayeva, N. (2018). <em>Restrained by uyat [shame]: Culture of dating and romantic relationships among urban Kyrgyz youth</em> (Master’s thesis). Nazarbayev University.</li>
+  </ul>
+</section>
+
+<section id="reflection">
+  <span class="label">Ungraded</span>
+  <h2>What working with AI helped me understand, and what I still don’t understand about my research design</h2>
+  <div class="ungraded">
+    <h3>Understood</h3>
+    <ul class="plain">
+      <li>“Does X affect Y?” and “How do people describe X and Y?” are different kinds of question.</li>
+      <li>My 2024 study mixed a positivist design with interpretive data.</li>
+      <li>My position is part of the findings.</li>
+    </ul>
+    <h3>Still unclear</h3>
+    <ul class="plain">
+      <li>How to compare genders without it becoming a causal comparison.</li>
+      <li>How many interviews are enough.</li>
+      <li>How to treat language switching as evidence.</li>
+    </ul>
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function current(){var y=window.scrollY+window.innerHeight*0.3,i=0;secs.forEach(function(s,k){if(s.offsetTop<=y)i=k});return i}
+  function mark(){var i=current();links.forEach(function(a,k){a.classList.toggle('on',k===i)})}
+  window.addEventListener('scroll',mark,{passive:true});mark();
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea,button'))return;
+    var i=current();
+    if(e.key==='ArrowRight'){e.preventDefault();secs[Math.min(i+1,secs.length-1)].scrollIntoView()}
+    if(e.key==='ArrowLeft'){e.preventDefault();(i===0?document.getElementById('top'):secs[i-1]).scrollIntoView()}
+  });
+  var clock=document.getElementById('clock'),go=document.getElementById('tgo'),rs=document.getElementById('treset');
+  var start=0,acc=0,t=null;
+  function show(){var s=Math.floor((acc+(t?Date.now()-start:0))/1000);clock.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');clock.classList.toggle('window',s>=480&&s<600);clock.classList.toggle('over',s>=600)}
+  go.addEventListener('click',function(){if(t){acc+=Date.now()-start;clearInterval(t);t=null;go.textContent='Start'}else{start=Date.now();t=setInterval(show,250);go.textContent='Pause'}show()});
+  rs.addEventListener('click',function(){if(t){clearInterval(t);t=null}acc=0;go.textContent='Start';show()});
+})();
+</script>
+
+</body>
+</html>
